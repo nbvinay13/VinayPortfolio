@@ -1,0 +1,150 @@
+:host {
+  display: block;
+}
+
+.operator-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+}
+
+.pulse-toolbar {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pulse-search input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border-radius: var(--radius);
+  background: var(--paper-elevated);
+  color: var(--ink);
+}
+
+.pulse-search input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.pulse-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: var(--paper-elevated);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.chip.is-active,
+.chip:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: var(--accent-glow);
+  color: var(--accent-deep);
+}
+
+.pulse-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.pulse-status {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.pulse-status code {
+  font-size: 0.78rem;
+  color: var(--accent-deep);
+  word-break: break-word;
+}
+
+.pulse-error {
+  margin-top: 0.75rem;
+  color: #9b2c2c;
+  font-weight: 600;
+}
+
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.35rem;
+}
+
+.pulse-card {
+  padding: 1.15rem 1.2rem;
+  background: color-mix(in srgb, var(--paper-elevated) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 0.15rem);
+  display: grid;
+  gap: 0.55rem;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.pulse-card:hover {
+  transform: translateY(-3px);
+}
+
+.pulse-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.pulse-card h3 {
+  font-size: 1.05rem;
+}
+
+.pulse-card h3 a {
+  text-decoration: none;
+}
+
+.pulse-card h3 a:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+
+.pulse-card p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.pulse-card__source {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.pulse-empty {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 800px) {
+  .pulse-grid {
+    grid-template-columns: 1fr;
+  }
+}

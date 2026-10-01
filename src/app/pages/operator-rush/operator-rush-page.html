@@ -1,0 +1,68 @@
+<section class="game-page section">
+  <div class="container">
+    <a class="back-link" routerLink="/games">← All games</a>
+    <p class="section-label">Game 1 · Arcade</p>
+    <h1 class="section-title game-page__title">Operator Rush</h1>
+    <p class="section-lead">
+      Match the glowing letter before the timer ends. Built so you can explain
+      <code>fromEvent</code>, <code>scan</code>, and stream teardown live.
+    </p>
+
+    <div class="operator-row">
+      @for (op of operators; track op) {
+        <span class="tag">{{ op }}</span>
+      }
+    </div>
+
+    <div class="arcade-board">
+      <div class="arcade-stats">
+        <div>
+          <span class="arcade-stats__label">Score</span>
+          <strong>{{ state().score }}</strong>
+        </div>
+        <div>
+          <span class="arcade-stats__label">Combo</span>
+          <strong>{{ state().combo }}</strong>
+        </div>
+        <div>
+          <span class="arcade-stats__label">Time</span>
+          <strong>{{ remainingSeconds() }}s</strong>
+        </div>
+        <div>
+          <span class="arcade-stats__label">Phase</span>
+          <strong>{{ state().phase }}</strong>
+        </div>
+      </div>
+
+      <div class="arcade-timer" aria-hidden="true">
+        <div class="arcade-timer__bar" [style.width.%]="progressPercent()"></div>
+      </div>
+
+      <div
+        class="arcade-target"
+        [class.is-hit]="state().lastResult === 'hit'"
+        [class.is-miss]="state().lastResult === 'miss'"
+        [class.is-idle]="state().phase !== 'running'"
+      >
+        <span class="arcade-target__key">{{ state().targetKey }}</span>
+        <p>{{ state().message }}</p>
+      </div>
+
+      <div class="arcade-actions">
+        @if (state().phase !== 'running') {
+          <button type="button" class="btn btn-primary" (click)="start()">
+            {{ state().phase === 'finished' ? 'Play again' : 'Start round' }}
+          </button>
+        } @else {
+          <button type="button" class="btn btn-secondary" (click)="stop()">Stop</button>
+          <p class="arcade-hint">Click Start, then type letters on your keyboard (not while focused in a text field).</p>
+        }
+      </div>
+
+      <p class="arcade-pipeline">
+        Pipeline:
+        <code>start() → keydown$ → filter → scan(score) → takeUntil(timer|stop)</code>
+      </p>
+    </div>
+  </div>
+</section>

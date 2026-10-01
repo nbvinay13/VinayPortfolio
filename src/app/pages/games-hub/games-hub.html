@@ -1,0 +1,26 @@
+<section class="games-hub section">
+  <div class="container">
+    <a class="back-link" routerLink="/">← Back to portfolio</a>
+    <p class="section-label">Interactive Lab</p>
+    <h1 class="section-title games-hub__title">Rx Games</h1>
+    <p class="section-lead">
+      Pick a demo to play. Each game is built with real RxJS streams so you can walk recruiters through the operators live.
+    </p>
+
+    <div class="games-hub__grid">
+      @for (game of games; track game.id) {
+        <a class="game-card" [routerLink]="game.route" [style.--game-accent]="game.accent">
+          <span class="game-card__diff">{{ game.difficulty }}</span>
+          <h2>{{ game.name }}</h2>
+          <p>{{ game.tagline }}</p>
+          <ul class="game-card__ops">
+            @for (op of game.operators; track op) {
+              <li class="tag">{{ op }}</li>
+            }
+          </ul>
+          <span class="game-card__cta">Play →</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>

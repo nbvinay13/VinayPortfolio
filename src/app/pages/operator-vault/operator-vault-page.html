@@ -1,0 +1,81 @@
+<section class="game-page section">
+  <div class="container">
+    <a class="back-link" routerLink="/games">← All games</a>
+    <p class="section-label">Game 2 · Puzzle</p>
+    <h1 class="section-title game-page__title">Operator Vault</h1>
+    <p class="section-lead">
+      Crack a secret 4-operator pipeline. After each guess you get Mastermind clues:
+      <strong>exact</strong> = right operator in the right slot,
+      <strong>present</strong> = right operator in the wrong slot.
+    </p>
+
+    <div class="operator-row">
+      @for (op of operators; track op) {
+        <span class="tag">{{ op }}</span>
+      }
+    </div>
+
+    <div class="vault-board">
+      <div class="vault-meta">
+        <span>Attempts left: <strong>{{ attemptsLeft() }}</strong></span>
+        <span class="vault-status" [attr.data-status]="status()">{{ status() }}</span>
+      </div>
+
+      <p class="vault-message" role="status">{{ message() }}</p>
+
+      <div class="vault-draft" aria-label="Current guess">
+        @for (slot of draft(); track $index; let i = $index) {
+          <button type="button" class="vault-slot" (click)="clearSlot(i)">
+            {{ slot ?? '·' }}
+          </button>
+        }
+      </div>
+
+      <div class="vault-pool" aria-label="Operator pool">
+        @for (op of pool; track op) {
+          <button type="button" class="btn btn-secondary vault-op" (click)="selectOperator(op)">
+            {{ op }}
+          </button>
+        }
+      </div>
+
+      <div class="vault-actions">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!draftFull() || status() !== 'playing'"
+          (click)="submitGuess()"
+        >
+          Submit guess
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="clearDraft()" [disabled]="status() !== 'playing'">
+          Clear
+        </button>
+        <button type="button" class="btn btn-ghost" (click)="newPuzzle()">New vault</button>
+      </div>
+
+      <div class="vault-history">
+        <h2>Guess history</h2>
+        @if (guesses().length === 0) {
+          <p class="vault-empty">No guesses yet — assemble a 4-step pipeline above.</p>
+        } @else {
+          <ol>
+            @for (guess of guesses(); track $index) {
+              <li>
+                <div class="vault-guess-ops">
+                  @for (op of guess.attempt; track $index) {
+                    <span class="tag">{{ op }}</span>
+                  }
+                </div>
+                <div class="vault-clue">
+                  <span>{{ guess.clue.exact }} exact</span>
+                  <span>{{ guess.clue.present }} present</span>
+                </div>
+              </li>
+            }
+          </ol>
+        }
+      </div>
+    </div>
+  </div>
+</section>

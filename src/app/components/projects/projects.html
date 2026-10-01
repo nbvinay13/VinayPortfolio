@@ -1,0 +1,78 @@
+<section class="section projects" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <p class="section-label">Featured Work</p>
+    <h2 id="projects-title" class="section-title">Full-stack projects that prove the stack</h2>
+    <p class="section-lead">
+      Banking and fintech case studies — problem, architecture, and measurable technical outcomes.
+      Filter them with a debounced RxJS search.
+    </p>
+
+    <div class="projects__search">
+      <label>
+        <span class="sr-only">Filter projects</span>
+        <input
+          type="search"
+          placeholder="Filter by bank, Angular, AG Grid, payments, ECharts, Java…"
+          [ngModel]="query()"
+          (ngModelChange)="onQueryChange($event)"
+        />
+      </label>
+      <div class="operator-row" aria-label="Operators in play">
+        @for (op of operators; track op) {
+          <span class="tag">{{ op }}</span>
+        }
+      </div>
+      <p class="projects__status" role="status">
+        Showing {{ filteredProjects().length }} project{{ filteredProjects().length === 1 ? '' : 's' }}
+      </p>
+    </div>
+
+    <div class="projects__list">
+      @for (project of filteredProjects(); track project.id; let i = $index) {
+        <article class="project" [style.--project-accent]="project.accent">
+          <div class="project__index">0{{ i + 1 }}</div>
+          <div class="project__body">
+            <header class="project__header">
+              <h3>{{ project.title }}</h3>
+              <p class="project__role">{{ project.role }}</p>
+            </header>
+
+            <div class="project__grid">
+              <div>
+                <h4>The Problem &amp; Role</h4>
+                <p>{{ project.problem }}</p>
+              </div>
+              <div>
+                <h4>Architecture / Tech Stack</h4>
+                <ul class="project__stack">
+                  @for (tech of project.stack; track tech) {
+                    <li class="tag">{{ tech }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+
+            <div class="project__achievements">
+              <h4>Key Technical Achievements</h4>
+              <ul>
+                @for (item of project.achievements; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="project__links">
+              @for (link of project.links; track link.label) {
+                <a class="btn btn-secondary" [href]="link.url" target="_blank" rel="noopener">
+                  {{ link.label }}
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      } @empty {
+        <p class="projects__empty">No projects match that query.</p>
+      }
+    </div>
+  </div>
+</section>

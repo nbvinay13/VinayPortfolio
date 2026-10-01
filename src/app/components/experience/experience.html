@@ -1,0 +1,41 @@
+<section class="section experience" id="experience" aria-labelledby="experience-title">
+  <div class="container">
+    <p class="section-label">Background</p>
+    <h2 id="experience-title" class="section-title">Professional timeline &amp; education</h2>
+    <p class="section-lead">
+      Concise roles, measurable outcomes, and credentials that support the work above.
+    </p>
+
+    <div class="experience__layout">
+      <ol class="timeline">
+        @for (job of experience; track job.company + job.period) {
+          <li class="timeline__item">
+            <div class="timeline__meta">
+              <span class="timeline__period">{{ job.period }}</span>
+              <h3>{{ job.role }}</h3>
+              <p class="timeline__company">{{ job.company }}</p>
+            </div>
+            <ul class="timeline__points">
+              @for (point of job.highlights; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </li>
+        }
+      </ol>
+
+      <aside class="education" aria-label="Education and certifications">
+        <h3>Education &amp; Certifications</h3>
+        <ul>
+          @for (item of education; track item.title) {
+            <li>
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.org }}</span>
+              <p>{{ item.detail }}</p>
+            </li>
+          }
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>

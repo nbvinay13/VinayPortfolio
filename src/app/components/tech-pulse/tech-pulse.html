@@ -1,0 +1,93 @@
+<section class="section tech-pulse" id="tech-pulse" aria-labelledby="tech-pulse-title">
+  <div class="container">
+    <p class="section-label">Live Demo · RxJS</p>
+    <h2 id="tech-pulse-title" class="section-title">Tech Pulse</h2>
+    <p class="section-lead">
+      Curated Angular / Node / banking-tech updates with a real typeahead pipeline you can narrate in interviews.
+    </p>
+
+    <div class="operator-row" aria-label="Operators in play">
+      @for (op of operators; track op) {
+        <span class="tag">{{ op }}</span>
+      }
+    </div>
+
+    <div class="pulse-toolbar">
+      <label class="pulse-search">
+        <span class="sr-only">Search articles</span>
+        <input
+          type="search"
+          placeholder="Search Angular, RxJS, testing…"
+          [ngModel]="query()"
+          (ngModelChange)="onQueryChange($event)"
+        />
+      </label>
+
+      <div class="pulse-tags" role="group" aria-label="Filter by tag">
+        @for (tag of tags; track tag) {
+          <button
+            type="button"
+            class="chip"
+            [class.is-active]="activeTag() === tag"
+            (click)="onTagChange(tag)"
+          >
+            {{ tag }}
+          </button>
+        }
+      </div>
+
+      <div class="pulse-actions">
+        <button type="button" class="btn btn-secondary" (click)="refresh()">Refresh</button>
+        <button
+          type="button"
+          class="btn"
+          [class.btn-ghost]="!autoRefresh()"
+          [class.btn-primary]="autoRefresh()"
+          (click)="toggleAutoRefresh()"
+        >
+          Auto-refresh {{ autoRefresh() ? 'on' : 'off' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="simulateError()">
+          Simulate error
+        </button>
+      </div>
+    </div>
+
+    <p class="pulse-status" role="status">
+      Pipeline:
+      <code>input → debounceTime(300) → distinctUntilChanged → switchMap(fetch) → catchError → shareReplay(1)</code>
+      · Status: <strong>{{ statusLabel() }}</strong>
+      @if (state().refreshedAt) {
+        · refreshed {{ state().refreshedAt | date: 'HH:mm:ss' }}
+      }
+    </p>
+
+    @if (state().status === 'error') {
+      <p class="pulse-error" role="alert">{{ state().errorMessage }}</p>
+    }
+
+    <div class="pulse-grid">
+      @for (article of state().articles; track article.id) {
+        <article class="pulse-card">
+          <div class="pulse-card__meta">
+            <span class="tag">{{ article.tag }}</span>
+            <time [attr.datetime]="article.publishedAt">{{ article.publishedAt }}</time>
+          </div>
+          <h3>
+            <a [href]="article.url" target="_blank" rel="noopener">{{ article.title }}</a>
+          </h3>
+          <p>{{ article.summary }}</p>
+          <span class="pulse-card__source">{{ article.source }}</span>
+        </article>
+      } @empty {
+        <p class="pulse-empty">
+          @if (state().status === 'loading') {
+            Fetching feed…
+          } @else {
+            No articles match — try another query or tag.
+          }
+        </p>
+      }
+    </div>
+  </div>
+</section>

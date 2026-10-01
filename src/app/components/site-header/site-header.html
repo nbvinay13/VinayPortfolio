@@ -1,0 +1,33 @@
+<header class="header" [class.header--scrolled]="scrolled()" [class.header--open]="menuOpen()">
+  <div class="container header__inner">
+    <a class="brand" routerLink="/" (click)="closeMenu()">
+      <span class="brand__mark" aria-hidden="true">{{ profile.shortName }}</span>
+      <span class="brand__name">{{ profile.name }}</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-nav"
+      (click)="toggleMenu()"
+    >
+      <span class="sr-only">{{ menuOpen() ? 'Close menu' : 'Open menu' }}</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Primary">
+      @for (link of links; track link.label) {
+        @if (link.route) {
+          <a [routerLink]="link.route" (click)="closeMenu()">{{ link.label }}</a>
+        } @else {
+          <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+        }
+      }
+      <a class="nav__cta" [href]="profile.resumeUrl" target="_blank" rel="noopener" (click)="closeMenu()">
+        Resume
+      </a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<section class="section games-teaser" id="games" aria-labelledby="games-title">
+  <div class="container">
+    <p class="section-label">Interactive Lab</p>
+    <h2 id="games-title" class="section-title">Rx Games</h2>
+    <p class="section-lead">
+      Step into a separate games screen — arcade reflexes and a tricky operator puzzle you can demo live.
+    </p>
+
+    <div class="games-teaser__grid">
+      @for (game of games; track game.id) {
+        <article class="teaser-card" [style.--game-accent]="game.accent">
+          <span class="teaser-card__diff">{{ game.difficulty }}</span>
+          <h3>{{ game.name }}</h3>
+          <p>{{ game.tagline }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="games-teaser__cta">
+      <a class="btn btn-primary" routerLink="/games">Open games lobby</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,161 @@
+:host {
+  display: block;
+}
+
+.game-page {
+  padding-top: var(--space-xl);
+}
+
+.game-page__title {
+  max-width: none;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  color: var(--accent-deep);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.operator-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+}
+
+.vault-board {
+  margin-top: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 0.35rem);
+  background: var(--paper-elevated);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.vault-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.vault-status {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-deep);
+}
+
+.vault-status[data-status='won'] {
+  color: #0d8a78;
+}
+
+.vault-status[data-status='lost'] {
+  color: #9b2c2c;
+}
+
+.vault-message {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.vault-draft {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.vault-slot {
+  min-height: 4.25rem;
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.vault-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-op {
+  font-size: 0.85rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.vault-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.vault-actions .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.vault-history h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.vault-empty {
+  color: var(--muted);
+  margin: 0;
+}
+
+.vault-history ol {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vault-history li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.vault-guess-ops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.vault-clue {
+  display: flex;
+  gap: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .vault-draft {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

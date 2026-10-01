@@ -1,0 +1,45 @@
+<app-hero />
+<app-projects />
+<div id="tech-pulse">
+@defer (on viewport; hydrate on idle) {
+  <app-tech-pulse />
+} @placeholder {
+  <div class="defer-slot" aria-hidden="true"></div>
+}
+</div>
+
+@defer (on viewport; hydrate on idle) {
+  <app-games-teaser />
+} @placeholder {
+  <div class="defer-slot" aria-hidden="true"></div>
+}
+
+<div id="capabilities">
+@defer (on viewport; hydrate on idle) {
+  <app-capabilities />
+} @placeholder {
+  <div class="defer-slot" aria-hidden="true"></div>
+}
+</div>
+
+<div id="architecture">
+@defer (on viewport; hydrate on idle) {
+  <app-architecture />
+} @placeholder {
+  <div class="defer-slot defer-slot--tall" aria-hidden="true"></div>
+}
+</div>
+<div id="experience">
+@defer (on viewport; hydrate on idle) {
+  <app-experience />
+} @placeholder {
+  <div class="defer-slot" aria-hidden="true"></div>
+}
+</div>
+<div id="contact">
+@defer (on viewport; hydrate on idle) {
+  <app-contact />
+} @placeholder {
+  <div class="defer-slot" aria-hidden="true"></div>
+}
+</div>

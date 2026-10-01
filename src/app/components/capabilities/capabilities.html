@@ -1,0 +1,22 @@
+<section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+  <div class="container">
+    <p class="section-label">Capabilities</p>
+    <h2 id="capabilities-title" class="section-title">Skills grouped by how they ship</h2>
+    <p class="section-lead">
+      Functional depth over icon walls — the tools I use to design, build, and operate products.
+    </p>
+
+    <div class="capabilities__grid">
+      @for (category of categories; track category.title) {
+        <article class="capability">
+          <h3>{{ category.title }}</h3>
+          <ul>
+            @for (item of category.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

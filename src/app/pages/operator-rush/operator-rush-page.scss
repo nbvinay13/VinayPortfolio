@@ -1,0 +1,157 @@
+:host {
+  display: block;
+}
+
+.game-page {
+  padding-top: var(--space-xl);
+}
+
+.game-page__title {
+  max-width: none;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  color: var(--accent-deep);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.operator-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+}
+
+.arcade-board {
+  margin-top: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: calc(var(--radius) + 0.35rem);
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 45%),
+    linear-gradient(160deg, #0e1619, #163039 55%, #10241f);
+  color: #e8f2f3;
+  box-shadow: var(--shadow-soft);
+}
+
+.arcade-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.arcade-stats__label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #fff 55%, transparent);
+  margin-bottom: 0.25rem;
+}
+
+.arcade-stats strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.arcade-timer {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #fff 12%, transparent);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.arcade-timer__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #7dd3c0);
+  transition: width 0.1s linear;
+}
+
+.arcade-target {
+  min-height: 12rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  border: 1px solid color-mix(in srgb, #fff 14%, transparent);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: color-mix(in srgb, #fff 4%, transparent);
+  margin-bottom: 1.25rem;
+}
+
+.arcade-target.is-hit {
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.arcade-target.is-miss {
+  border-color: color-mix(in srgb, #e07a5f 70%, transparent);
+}
+
+.arcade-target__key {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 30px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.arcade-target.is-idle .arcade-target__key {
+  opacity: 0.45;
+}
+
+.arcade-target p {
+  color: color-mix(in srgb, #fff 70%, transparent);
+  margin: 0;
+}
+
+.arcade-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.arcade-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, #fff 60%, transparent);
+}
+
+.arcade-pipeline {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, #fff 12%, transparent);
+  font-size: 0.86rem;
+  color: color-mix(in srgb, #fff 62%, transparent);
+}
+
+.arcade-pipeline code {
+  color: #9fe0d2;
+  font-size: 0.78rem;
+  word-break: break-word;
+}
+
+.game-page .btn-primary {
+  background: #fff;
+  color: var(--ink);
+}
+
+.game-page .btn-secondary {
+  color: #fff;
+  border-color: color-mix(in srgb, #fff 30%, transparent);
+}
+
+@media (max-width: 640px) {
+  .arcade-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

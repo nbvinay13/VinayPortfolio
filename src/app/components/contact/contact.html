@@ -1,0 +1,57 @@
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container contact__wrap">
+    <div class="contact__intro">
+      <p class="section-label">Contact</p>
+      <h2 id="contact-title" class="section-title">Let’s build something measurable</h2>
+      <p class="section-lead">
+        Prefer email? Reach me directly or use the form — both open a composed message.
+      </p>
+      <a class="contact__mail" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <a class="contact__phone" [href]="'tel:' + profile.phone">{{ profile.phone }}</a>
+      <div class="contact__social">
+        <a class="btn btn-secondary" [href]="profile.resumeUrl" target="_blank" rel="noopener">Resume</a>
+        <a class="btn btn-secondary" [href]="profile.linkedinUrl" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" [href]="profile.githubUrl" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <form class="contact__form" (submit)="onSubmit($event)" novalidate>
+      <label>
+        <span>Name</span>
+        <input
+          type="text"
+          name="name"
+          autocomplete="name"
+          required
+          [ngModel]="name()"
+          (ngModelChange)="name.set($event)"
+        />
+      </label>
+      <label>
+        <span>Email</span>
+        <input
+          type="email"
+          name="email"
+          autocomplete="email"
+          required
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+        />
+      </label>
+      <label>
+        <span>Message</span>
+        <textarea
+          name="message"
+          rows="5"
+          required
+          [ngModel]="message()"
+          (ngModelChange)="message.set($event)"
+        ></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Send message</button>
+      @if (submitted()) {
+        <p class="contact__note" role="status">Opening your email client…</p>
+      }
+    </form>
+  </div>
+</section>

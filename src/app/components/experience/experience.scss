@@ -1,0 +1,136 @@
+:host {
+  display: block;
+}
+
+.experience__layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.85fr;
+  gap: 2rem;
+  margin-top: var(--space-xl);
+  align-items: start;
+}
+
+.timeline {
+  display: grid;
+  gap: 0;
+  border-left: 2px solid var(--mist);
+  padding-left: 1.35rem;
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -1.72rem;
+  top: 0.35rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.timeline__period {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 0.35rem;
+}
+
+.timeline__item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline__company {
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+  font-weight: 550;
+}
+
+.timeline__points {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.timeline__points li {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  padding-left: 0.9rem;
+  position: relative;
+}
+
+.timeline__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--ink);
+}
+
+.education {
+  padding: 1.4rem;
+  background: var(--paper-elevated);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 0.15rem);
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+}
+
+.education h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.education ul {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.education li {
+  display: grid;
+  gap: 0.2rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.education li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.education strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.education span {
+  color: var(--accent-deep);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.education p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .experience__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .education {
+    position: static;
+  }
+}

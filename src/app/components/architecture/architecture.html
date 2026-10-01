@@ -1,0 +1,47 @@
+<section class="section architecture" id="architecture" aria-labelledby="architecture-title">
+  <div class="container">
+    <p class="section-label">Engineering</p>
+    <h2 id="architecture-title" class="section-title">Architecture &amp; engineering highlights</h2>
+    <p class="section-lead">
+      Mini case patterns for performance, state design, and reusable Angular libraries.
+    </p>
+
+    <div class="architecture__panel">
+      <div class="architecture__tabs" role="tablist" aria-label="Architecture topics">
+        @for (item of highlights; track item.title; let i = $index) {
+          <button
+            type="button"
+            role="tab"
+            class="architecture__tab"
+            [class.is-active]="active() === i"
+            [attr.aria-selected]="active() === i"
+            [id]="'arch-tab-' + i"
+            [attr.aria-controls]="'arch-panel-' + i"
+            (click)="select(i)"
+          >
+            {{ item.title }}
+          </button>
+        }
+      </div>
+
+      @for (item of highlights; track item.title; let i = $index) {
+        @if (active() === i) {
+          <div
+            class="architecture__content"
+            role="tabpanel"
+            [id]="'arch-panel-' + i"
+            [attr.aria-labelledby]="'arch-tab-' + i"
+          >
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.summary }}</p>
+            <ul>
+              @for (point of item.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+:host {
+  display: block;
+}
+
+.capabilities {
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in srgb, var(--accent) 5%, transparent) 40%,
+      transparent
+    );
+}
+
+.capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: var(--space-xl);
+}
+
+.capability {
+  padding: 1.5rem 1.4rem;
+  border-top: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--paper-elevated) 88%, transparent);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  transition: background 0.3s ease;
+}
+
+.capability:hover {
+  background: var(--paper-elevated);
+}
+
+.capability h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.capability ul {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.capability li {
+  position: relative;
+  padding-left: 0.95rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.capability li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.15rem;
+}
+
+@media (max-width: 720px) {
+  .capabilities__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,105 @@
+:host {
+  display: block;
+}
+
+.contact__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--accent) 10%, var(--paper-elevated)), var(--paper-elevated));
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 0.35rem);
+  box-shadow: var(--shadow-soft);
+}
+
+.contact__mail {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-deep);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.contact__mail:hover {
+  text-decoration: underline;
+}
+
+.contact__phone {
+  display: block;
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.contact__phone:hover {
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+
+.contact__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.contact__form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact__form label {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.contact__form span {
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--ink-soft);
+}
+
+.contact__form input,
+.contact__form textarea {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border-radius: var(--radius);
+  padding: 0.8rem 0.9rem;
+  background: color-mix(in srgb, #fff 80%, transparent);
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.contact__form .btn {
+  justify-self: start;
+  margin-top: 0.25rem;
+}
+
+.contact__note {
+  font-size: 0.9rem;
+  color: var(--accent-deep);
+}
+
+@media (max-width: 800px) {
+  .contact__wrap {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}

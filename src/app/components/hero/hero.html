@@ -1,0 +1,20 @@
+<section class="hero" id="top" aria-labelledby="hero-heading">
+  <div class="hero__plane" aria-hidden="true"></div>
+  <div class="container hero__content">
+    <p class="hero__brand">{{ profile.name }}</p>
+    <h1 id="hero-heading" class="hero__role">{{ profile.role }}</h1>
+    <p class="hero__value">{{ profile.valueStatement }}</p>
+    <div class="hero__ctas">
+      <a class="btn btn-primary" [href]="profile.resumeUrl" target="_blank" rel="noopener">
+        Resume (PDF)
+      </a>
+      <a class="btn btn-secondary" [href]="profile.githubUrl" target="_blank" rel="noopener">
+        GitHub
+      </a>
+      <a class="btn btn-ghost" [href]="profile.linkedinUrl" target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+    </div>
+    <p class="hero__meta">{{ profile.location }}</p>
+  </div>
+</section>
