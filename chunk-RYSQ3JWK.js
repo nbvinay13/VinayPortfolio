@@ -1,0 +1,1 @@
+function i(e,o){let t=o.trim().toLowerCase();return t?e.filter(r=>[r.title,r.role,r.problem,...r.stack,...r.achievements].join(" ").toLowerCase().includes(t)):e}function s(e,o){let t=o.trim().toLowerCase();return t?e.toLowerCase().includes(t):!0}export{i as a,s as b};
